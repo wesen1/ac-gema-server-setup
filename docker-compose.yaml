@@ -44,7 +44,6 @@ services:
         - database
       volumes:
         - ./shared-data/mysql-data:/var/lib/mysql:rw
-        - ./backup:/backup
 
 networks:
   database:
