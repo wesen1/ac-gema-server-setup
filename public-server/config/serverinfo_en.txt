@@ -24,3 +24,16 @@
 //     Coloring a motd is fun: \f0Green\f5 and another \fLgreen\f5 from the set.
 //     contact me at a@b.c
 
+Server with support for custom game modes
+\n
+All standard game modes are playable.
+Available custom game modes are:
+* Gema (Vote a gema map in mode CTF to enable it)
+\n
+Please note:
+All gameplay affecting modifications (flag reset, extend time, etc.) are
+disabled since this server is public.
+Another private server is available via "/connect <ip> 11111 gema" where
+these modifications are enabled.
+\n
+Contact: \f2<email address>
