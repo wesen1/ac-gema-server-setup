@@ -1,0 +1,50 @@
+version: "3"
+services:
+    public_server:
+        image: wesen1/assaultcube-wesen-gema-mod-server:latest
+        ports:
+            - "28763:28763/udp"
+            - "28764:28764/udp"
+        volumes:
+            - ./shared-data/config:/ac-server/config/shared:rw
+            - ./public-server/config:/ac-server/config:rw
+            - ./shared-data/packages:/ac-server/packages:rw
+            - ./shared-data/demos/public:/ac-server/demos
+            - ./public-server/config.lua:/ac-server/lua/config/config.lua:rw
+        networks:
+          - database
+        depends_on:
+          - database
+
+    private_server:
+        image: wesen1/assaultcube-wesen-gema-mod-server:latest
+        ports:
+            - "11111:28763/udp"
+            - "11112:28764/udp"
+        volumes:
+            - ./shared-data/config:/ac-server/config/shared:rw
+            - ./private-server/config:/ac-server/config:rw
+            - ./shared-data/packages:/ac-server/packages:rw
+            - ./shared-data/demos/private:/ac-server/demos
+            - ./private-server/config.lua:/ac-server/lua/config/config.lua:rw
+        networks:
+          - database
+        depends_on:
+          - database
+
+    database:
+      image: mysql/mysql-server:5.7
+      container_name: database
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: assaultcube_gema
+        MYSQL_USER: assaultcube
+        MYSQL_PASSWORD: password
+      networks:
+        - database
+      volumes:
+        - ./shared-data/mysql-data:/var/lib/mysql:rw
+        - ./backup:/backup
+
+networks:
+  database:
