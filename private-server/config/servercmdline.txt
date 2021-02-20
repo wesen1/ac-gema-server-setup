@@ -101,31 +101,7 @@
 
 // General settings
 -n \fJStandard \f1+ \f2Custom \f1Modes \fM#2 // Server description
--c 16                                        // Maximum number of clients
--k -100                                      // Allowed team kills before auto kick
--y -100                                      // Allowed team kills before auto ban
--kA 0                                        // Disable auto kick for inactivity
--kB 1440                                     // Ban duration = 1 day
-
-// Permissions
--P kbmFw // Vote permissions
-         //   unarmed: kick, ban, mastermode, any kick/ban reason
-         //   admin: forceteam
--M cU    // Map upload permissions
-         //   unarmed: initial upload
-         //   admin: update map
-
-// Logging
--LF 5 // Disable file logging
--LS 5 // Disable syslog logging
-
-// File paths
--X config/shared/serverpwd.cfg          // Server passwords file
--B config/shared/serverblacklist.cfg    // IP blacklist file
--K config/shared/nicknameblacklist.cfg  // Nickname blacklist file
--g config/shared/forbidden.cfg          // Forbidden words file
--E config/shared/serverkillmessages.cfg // Server kill messages file
--W /ac-server/demos/demo_               // Demos directory and file name prefix
+-C config/shared/servercmdline.txt
 
 // Special settings
 -p gema      // serverpassword, for passworded servers
