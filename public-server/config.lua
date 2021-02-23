@@ -57,6 +57,7 @@ return {
 
     -- Optional extensions
     "Extensions.AdditionalServerInfos",
-    "Extensions.UnplayableGemaMapsRemover"
+    "Extensions.UnplayableGemaMapsRemover",
+    ["Extensions.ConnectionAmountLimiter"] = { 2 }
   }
 }
