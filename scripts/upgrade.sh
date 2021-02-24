@@ -4,7 +4,9 @@
 set -e
 
 # Set up the required variables
-export REPOSITORY_ROOT="$PWD"
+
+# Argument $0 is the path to this script relative from the current working directory
+export REPOSITORY_ROOT="$(dirname $0)/../"
 . "$REPOSITORY_ROOT/scripts/load-environment-variables.sh"
 
 # Make sure that the required server files exist
@@ -27,3 +29,7 @@ docker-compose pull
 
 # Update the config files with the latest templates
 "$REPOSITORY_ROOT/scripts/setup/update-config-files.sh"
+
+if [[ "$1" != "-h" && "$1" != "--halt" ]]; then
+  docker-compose up -d
+fi
