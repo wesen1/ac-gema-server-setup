@@ -12,7 +12,7 @@ getUniqueFilePath()
   fileNamePrefix="$2"
 
   # Find a unique log backup file name
-  printf -v dateTimeString '%(%Y-%m-%d_%H:%M:%S)T\n' -1
+  printf -v dateTimeString '%(%Y_%m_%d_%H_%M_%S)T\n' -1
   fileName="$fileNamePrefix$dateTimeString"
   uniqueFileName="$fileName"
   counter=1

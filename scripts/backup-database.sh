@@ -45,5 +45,5 @@ fi
 
 mysqldumpCommand="mysqldump $mysqldumpOptions $DATABASE_NAME"
 
-(cd "$REPOSITORY_ROOT"; docker-compose run database $mysqldumpCommand > "$databaseBackupFilePath")
+(cd "$REPOSITORY_ROOT"; docker-compose run --rm database $mysqldumpCommand > "$databaseBackupFilePath")
 printf "OK\n"
