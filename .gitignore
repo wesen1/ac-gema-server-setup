@@ -1,4 +1,11 @@
 packages
+geoip-data
 mysql-data
 maprot_gema.cfg
 demos
+database_backups
+log_backups
+private-server/config/*
+public-server/config/*
+shared-data/config/*
+.env

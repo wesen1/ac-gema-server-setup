@@ -1,6 +1,6 @@
 ---
 -- @author wesen
--- @copyright 2020 wesen <wesen-ac@web.de>
+-- @copyright 2020-2021 wesen <wesen-ac@web.de>
 -- @release 0.1
 -- @license MIT
 --
@@ -14,11 +14,11 @@ return {
   LuaORM = {
     connection = "LuaSQL/MySQL",
     database = {
-      databaseName = "assaultcube_gema",
+      databaseName = os.getenv("DATABASE_NAME"),
       host = "database",
       portNumber = 3306,
-      userName = "assaultcube",
-      password = "password"
+      userName = os.getenv("DATABASE_USER"),
+      password = os.getenv("DATABASE_PASSWORD")
     },
     logger = { isEnabled = true, isDebugEnabled = false }
   },
@@ -37,21 +37,27 @@ return {
     -- Core extensions
     "AC-LuaServer.Extensions.GameModeManager.GameModeManager",
     "GemaMode",
+    [ "GemaScoreManager.GemaScoreManager" ] = {
+      { mergeScoresByPlayerName = true },
+      { mergeScoresByPlayerName = true }
+    },
     "Extensions.GemaMapManager",
     "Extensions.MapStatisticsPrinter",
-    "ScoreAttemptManager.ScoreAttemptManager",
-    "Extensions.GemaMapRotationManager.GemaMapRotationManager",
+    "Extensions.GemaMapRotationManager",
 
     "CommandManager.CommandManager",
     "Commands.CmdsCommand",
     "Commands.HelpCommand",
     "Commands.MapTopCommand",
     "Commands.RulesCommand",
+    "Commands.MapScoreCommand",
     "Commands.ServerTopCommand",
+    "Commands.ServerScoreCommand",
+    "Commands.LatestMapsCommand",
 
     -- Optional extensions
-    "ServerScoreManager.ServerScoreManager",
     "Extensions.AdditionalServerInfos",
-    "Extensions.UnplayableGemaMapsRemover"
+    "Extensions.UnplayableGemaMapsRemover",
+    ["Extensions.ConnectionAmountLimiter"] = { 2 }
   }
 }
