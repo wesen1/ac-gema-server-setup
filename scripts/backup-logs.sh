@@ -1,22 +1,20 @@
 #!/bin/bash
 
-logsDirectoryPath="$REPOSITORY_ROOT/logs"
+# Initialize if required
+if [[ -z "$REPOSITORY_ROOT" ]]; then
+  REPOSITORY_ROOT="$(dirname $0)/../"
+  . "$REPOSITORY_ROOT/scripts/util/load-environment-variables.sh"
+  . "$REPOSITORY_ROOT/scripts/util/functions.sh"
+fi
 
-# Create the logs directory path if required
+# Find a unique file to write the backup to
+logsDirectoryPath="$REPOSITORY_ROOT/log_backups"
 if [ ! -d "$logsDirectoryPath" ]; then
   mkdir "$logsDirectoryPath"
 fi
-
-# Find a unique log backup file name
-printf -v dateTimeString '%(%Y-%m-%d_%H:%M:%S)T\n' -1
-logBackupFileName="log_backup_$dateTimeString"
-uniqueLogBackupFileName="$logBackupFileName"
-counter=1
-
-while [ -f "$uniqueLogBackupFileName" ]; do
-  uniqueLogBackupFileName="$logBackupFileName_$counter"
-  counter=$(( $counter + 1 ))
-done
+logBackupFilePath="$(getUniqueFilePath $logsDirectoryPath log_backup_)"
 
 # Backup the logs
-docker-compose -f "$REPOSITORY_ROOT/docker-compose.yaml" logs -t --no-color > "$logsDirectoryPath/$uniqueLogBackupFileName"
+printf "Creating log backup ... "
+(cd "$REPOSITORY_ROOT"; docker-compose logs -t --no-color > "$logBackupFilePath")
+printf "OK\n"
