@@ -2,7 +2,8 @@ packages
 mysql-data
 maprot_gema.cfg
 demos
-logs
+database_backups
+log_backups
 private-server/config/*
 public-server/config/*
 shared-data/config/*
