@@ -33,6 +33,8 @@ services:
         ports:
             - "11111:28763/udp"
             - "11112:28764/udp"
+            - "1111:28763/udp"
+            - "1112:28764/udp"
         volumes:
             - ./shared-data/config:/ac-server/config/shared:rw
             - ./private-server/config:/ac-server/config:rw
