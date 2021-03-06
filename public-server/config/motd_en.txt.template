@@ -19,3 +19,4 @@
 //     contact me at a@b.c
 
 \fM[INFO] Say "/connect ${SERVER_IP} 11111 ${PRIVATE_SERVER_PASSWORD}" to connect to the private server (Password = ${PRIVATE_SERVER_PASSWORD})
+\fM[INFO] Join our discord at ${DISCORD_INVITE_LINK}
