@@ -38,8 +38,18 @@ return {
     "AC-LuaServer.Extensions.GameModeManager.GameModeManager",
     "GemaMode",
     [ "GemaScoreManager.GemaScoreManager" ] = {
-      { mergeScoresByPlayerName = true },
-      { mergeScoresByPlayerName = true }
+      {
+        mergeScoresByPlayerName = true,
+        contexts = {
+          "main", "knife", "pistol", "assault-rifle", "submachine-gun", "sniper-rifle", "shotgun", "carbine"
+        }
+      },
+      {
+        mergeScoresByPlayerName = true,
+        contexts = {
+          "main", "knife", "pistol", "assault-rifle", "submachine-gun", "sniper-rifle", "shotgun", "carbine"
+        }
+      }
     },
     "Extensions.GemaMapManager",
     "Extensions.MapStatisticsPrinter",
@@ -53,6 +63,7 @@ return {
     "Commands.MapScoreCommand",
     "Commands.ServerTopCommand",
     "Commands.ServerScoreCommand",
+    "Commands.ScoreContextsCommand",
     "Commands.LatestMapsCommand",
 
     -- Optional extensions
