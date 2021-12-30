@@ -104,5 +104,4 @@
 -C config/shared/servercmdline.txt
 
 // Special settings
--p ${PRIVATE_SERVER_PASSWORD}  // serverpassword, for passworded servers
 //-m localhost  // Disable attempts to register at a masterserver
