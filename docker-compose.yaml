@@ -1,6 +1,6 @@
 version: "3"
 services:
-    public_server:
+    private_server:
         image: wesen1/assaultcube-wesen-gema-mod-server:latest
         restart: unless-stopped
         environment:
@@ -10,27 +10,6 @@ services:
         ports:
             - "28763:28763/udp"
             - "28764:28764/udp"
-        volumes:
-            - ./shared-data/config:/ac-server/config/shared:rw
-            - ./public-server/config:/ac-server/config:rw
-            - ./shared-data/packages:/ac-server/packages:rw
-            - ./shared-data/demos/public:/ac-server/demos
-            - ./public-server/config.lua:/ac-server/lua/config/config.lua:rw
-            - ./shared-data/geoip-data:/usr/share/GeoIP
-        networks:
-          - database
-        depends_on:
-          - database
-          - geoip-updater
-
-    private_server:
-        image: wesen1/assaultcube-wesen-gema-mod-server:latest
-        restart: unless-stopped
-        environment:
-          DATABASE_NAME: ${DATABASE_NAME}
-          DATABASE_USER: ${DATABASE_USER}
-          DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-        ports:
             - "11111:28763/udp"
             - "11112:28764/udp"
             - "1111:28763/udp"

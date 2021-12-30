@@ -100,9 +100,8 @@
 
 
 // General settings
--n \fJStandard \f1+ \f2Custom \f1Modes \fM#2  // Server description
+-n \fJStandard \f1+ \f2Custom \f1Modes  // Server description
 -C config/shared/servercmdline.txt
 
 // Special settings
--p ${PRIVATE_SERVER_PASSWORD}  // serverpassword, for passworded servers
 //-m localhost  // Disable attempts to register at a masterserver
